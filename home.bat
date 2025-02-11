@@ -635,7 +635,7 @@ echo 项目作者：运动鸡
 echo 贡献者：Xia Junyi（运行测试，bug反馈）
 echo [Q] q群：1033982052
 echo [A] B站：运动鸡（https://space.bilibili.com/1230630211）
-echo [P] 项目地址：
+echo [P] 项目地址：https://github.com/Yundongji/DeepSeek-To-Go
 echo [D] 捐赠：https://afdian.com/a/yundongji
 echo [O] 此程序使用的开源项目
 echo [R] README
@@ -652,7 +652,7 @@ if errorlevel 7 (
     goto :about
 )
 if errorlevel 6 (
-    start 项目地址网页
+    start https://github.com/Yundongji/DeepSeek-To-Go
     goto :about
 )
 if errorlevel 5 (
