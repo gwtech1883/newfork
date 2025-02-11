@@ -661,7 +661,8 @@ if errorlevel 5 (
 )
 if errorlevel 4 goto :open_source_projects
 if errorlevel 3 (
-    start notepad.exe README.md
+    start README.md
+    cls
     goto :about
 )
 if errorlevel 2 (
@@ -706,7 +707,7 @@ if errorlevel 11 (
     goto :open_source_projects
 )
 if errorlevel 10 (
-    start notepad.exe %cd%\license\Ollama_LICENSE
+    start notepad.exe %cd%\osp_license\Ollama_LICENSE
     goto :open_source_projects
 )
 if errorlevel 9 (
@@ -718,11 +719,11 @@ if errorlevel 8 (
     goto :open_source_projects
 )
 if errorlevel 7 (
-    start notepad.exe %cd%\license\DeepSeek_v3_LICENSE-MODEL
+    start notepad.exe %cd%\osp_license\DeepSeek_v3_LICENSE-MODEL
     goto :open_source_projects
 )
 if errorlevel 6 (
-    start notepad.exe %cd%\license\DeepSeek_v3_LICENSE-CODE
+    start notepad.exe %cd%\osp_license\DeepSeek_v3_LICENSE-CODE
     goto :open_source_projects
 )
 if errorlevel 5 (
@@ -734,7 +735,7 @@ if errorlevel 4 (
     goto :open_source_projects
 )
 if errorlevel 3 (
-    start notepad.exe %cd%\license\DeepSeek_r1_LICENSE
+    start notepad.exe %cd%\osp_license\DeepSeek_r1_LICENSE
     goto :open_source_projects
 )
 if errorlevel 2 (
