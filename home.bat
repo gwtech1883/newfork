@@ -1,4 +1,4 @@
-: Deepseek To Go  v0.7.0  by 运动鸡
+: Deepseek To Go  v1.0.0  by 运动鸡
 : Please open this file using GB 2312 (ANSI) encoding.
 
 @echo off
@@ -630,7 +630,7 @@ if errorlevel 1 (
 cls
 echo 关于
 echo ------------------------
-echo DeepSeek To Go  v0.7.0
+echo DeepSeek To Go  v1.0.0
 echo 项目作者：运动鸡
 echo 贡献者：Xia Junyi（运行测试，bug反馈）
 echo [Q] q群：1033982052
