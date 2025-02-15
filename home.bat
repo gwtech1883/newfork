@@ -1,4 +1,4 @@
-: Deepseek To Go  v1.0.0  by 运动鸡
+: Deepseek To Go  v1.1.0  by 运动鸡
 : Please open this file using GB 2312 (ANSI) encoding.
 
 @echo off
@@ -17,15 +17,9 @@ cls
 title DeepSeek To Go 客户端
 color %color_client%
 echo DeepSeek To Go
-echo ------------------------
-echo [1] deepseek-r1:1.5b (1.1GB)
-echo [2] deepseek-r1:7b (4.7GB)
-echo [3] deepseek-r1:8b (4.9GB)
-echo [4] deepseek-r1:14b (9GB)
-echo [5] deepseek-r1:32b (20GB)
-echo [6] deepseek-r1:70b (43GB)
-echo [7] deepseek-r1:671b (404GB)
-echo [8] deepseek-v3:671b (404GB)
+set next_interface=main_n
+goto :text_block_models_list
+:main_n
 echo ------------------------
 echo [T] 使用提示（使用前必读）
 echo [F] 常见问题
@@ -59,132 +53,44 @@ if errorlevel 2 goto :faq
 if errorlevel 1 goto :tips
 
 :run_ds_r1_1_5b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\1.5b" (
-    echo 模型deepseek-r1:1.5b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:1.5b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:1.5b
-goto :main
+set model_name_1=r1
+set model_name_2=1.5b
+goto :text_block_run_models
 
 :run_ds_r1_7b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\7b" (
-    echo 模型deepseek-r1:7b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:7b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:7b
-goto :main
+set model_name_1=r1
+set model_name_2=7b
+goto :text_block_run_models
 
 :run_ds_r1_8b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\8b" (
-    echo 模型deepseek-r1:8b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:8b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:8b
-goto :main
+set model_name_1=r1
+set model_name_2=8b
+goto :text_block_run_models
 
 :run_ds_r1_14b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\14b" (
-    echo 模型deepseek-r1:14b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:14b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:14b
-goto :main
+set model_name_1=r1
+set model_name_2=14b
+goto :text_block_run_models
 
 :run_ds_r1_32b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\32b" (
-    echo 模型deepseek-r1:32b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:32b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:32b
-goto :main
+set model_name_1=r1
+set model_name_2=32b
+goto :text_block_run_models
 
 :run_ds_r1_70b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\70b" (
-    echo 模型deepseek-r1:70b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:70b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:70b
-goto :main
+set model_name_1=r1
+set model_name_2=70b
+goto :text_block_run_models
 
 :run_ds_r1_671b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\671b" (
-    echo 模型deepseek-r1:671b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-r1:671b
-cls
-ollama run %ollama_chat_parameter% deepseek-r1:671b
-goto :main
+set model_name_1=r1
+set model_name_2=671b
+goto :text_block_run_models
 
 :run_ds_v3_671b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-v3\671b" (
-    echo 模型deepseek-v3:671b尚未安装！
-    echo ------------------------
-    echo [C] 联网下载
-    echo [B] 返回主页
-    echo ------------------------
-    choice /C:CB /N
-    if errorlevel 2 goto :main
-)
-title deepseek-v3:671b
-cls
-ollama run %ollama_chat_parameter% deepseek-v3:671b
-goto :main
+set model_name_1=v3
+set model_name_2=671b
+goto :text_block_run_models
 
 :tips
 cls
@@ -250,6 +156,7 @@ cls
 echo 确认执行
 echo ------------------------
 echo 要 清除历史记录 吗？
+echo 此操作无法撤销！
 echo 警告：如果你的电脑上已经安装了Ollama，请谨慎执行！
 echo ------------------------
 echo [C] 执行操作，我知道我在做什么！
@@ -297,6 +204,7 @@ echo ------------------------
 echo 要 清除DeepSeek To Go的公钥和私钥 吗？
 echo 警告：这会删除当前用户文件夹里“.ollama”文件夹中的
 echo “id_ed25519.pub”和“id_ed25519”文件！
+echo 此操作无法撤销！
 echo 如果你的电脑上已经安装了Ollama，请谨慎执行！
 echo ------------------------
 echo [C] 执行操作，我知道我在做什么！
@@ -319,6 +227,7 @@ echo 确认执行
 echo ------------------------
 echo 要 删除当前用户文件夹中的“.ollama”文件夹 吗？
 echo 警告：这会删除当前用户文件夹里的“.ollama”文件夹！
+echo 此操作无法撤销！
 echo 如果你的电脑上已经安装了Ollama，请谨慎执行！
 echo ------------------------
 echo [C] 执行操作，我知道我在做什么！
@@ -338,244 +247,76 @@ if errorlevel 1 goto :advanced_commands
 color %color_client%
 cls
 echo 卸载已安装的模型
-echo ------------------------
-echo [1] deepseek-r1:1.5b (1.1GB)
-echo [2] deepseek-r1:7b (4.7GB)
-echo [3] deepseek-r1:8b (4.9GB)
-echo [4] deepseek-r1:14b (9GB)
-echo [5] deepseek-r1:32b (20GB)
-echo [6] deepseek-r1:70b (43GB)
-echo [7] deepseek-r1:671b (404GB)
-echo [8] deepseek-v3:671b (404GB)
+set next_interface=uninstall_models_n
+goto :text_block_models_list
+:uninstall_models_n
 echo [A] 全部模型
 echo [B] 返回主页
 echo ------------------------
 choice /C:12345678AB /N
 if errorlevel 10 goto :main
-if errorlevel 9 goto :confirm_uninstall_all
-if errorlevel 8 goto :confirm_uninstall_ds_v3_671b
-if errorlevel 7 goto :confirm_uninstall_ds_r1_671b
-if errorlevel 6 goto :confirm_uninstall_ds_r1_70b
-if errorlevel 5 goto :confirm_uninstall_ds_r1_32b
-if errorlevel 4 goto :confirm_uninstall_ds_r1_14b
-if errorlevel 3 goto :confirm_uninstall_ds_r1_8b
-if errorlevel 2 goto :confirm_uninstall_ds_r1_7b
-if errorlevel 1 goto :confirm_uninstall_ds_r1_1_5b
-
-:confirm_uninstall_ds_v3_671b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-v3:671b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_v3_671b
-if errorlevel 1 goto :uninstall_models
+if errorlevel 9 goto :uninstall_all
+if errorlevel 8 goto :uninstall_ds_v3_671b
+if errorlevel 7 goto :uninstall_ds_r1_671b
+if errorlevel 6 goto :uninstall_ds_r1_70b
+if errorlevel 5 goto :uninstall_ds_r1_32b
+if errorlevel 4 goto :uninstall_ds_r1_14b
+if errorlevel 3 goto :uninstall_ds_r1_8b
+if errorlevel 2 goto :uninstall_ds_r1_7b
+if errorlevel 1 goto :uninstall_ds_r1_1_5b
 
 :uninstall_ds_v3_671b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-v3\671b" (
-    echo 模型deepseek-v3:671b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-v3:671b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_671b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:671b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_671b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=v3
+set model_name_2=671b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_671b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\671b" (
-    echo 模型deepseek-r1:671b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:671b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_70b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:70b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_70b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=r1
+set model_name_2=671b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_70b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\70b" (
-    echo 模型deepseek-r1:70b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:70b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_32b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:32b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_32b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=r1
+set model_name_2=70b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_32b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\32b" (
-    echo 模型deepseek-r1:32b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:32b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_14b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:14b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_14b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=r1
+set model_name_2=32b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_14b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\14b" (
-    echo 模型deepseek-r1:14b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:14b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_8b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:8b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_8b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=r1
+set model_name_2=14b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_8b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\8b" (
-    echo 模型deepseek-r1:8b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:8b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_7b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:7b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_7b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=r1
+set model_name_2=8b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_7b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\7b" (
-    echo 模型deepseek-r1:7b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:7b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
-
-:confirm_uninstall_ds_r1_1_5b
-cls
-echo 确认执行
-echo ------------------------
-echo 要 卸载模型deepseek-r1:1.5b 吗？
-echo ------------------------
-echo [C] 执行操作，我知道我在做什么！
-echo [B] 不执行操作，并返回上一级。
-echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_ds_r1_1_5b
-if errorlevel 1 goto :uninstall_models
+set model_name_1=r1
+set model_name_2=7b
+goto :text_block_uninstall_models
 
 :uninstall_ds_r1_1_5b
-cls
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1\1.5b" (
-    echo 模型deepseek-r1:1.5b尚未安装！
-    pause
-    goto :uninstall_models
-)
-ollama rm deepseek-r1:1.5b
-echo 命令执行完毕。
-pause
-goto :uninstall_models
+set model_name_1=r1
+set model_name_2=1.5b
+goto :text_block_uninstall_models
 
-:confirm_uninstall_all
+:uninstall_all
 cls
 echo 确认执行
 echo ------------------------
 echo 要 卸载全部模型 吗？
+echo 此操作无法撤销！
 echo ------------------------
 echo [C] 执行操作，我知道我在做什么！
 echo [B] 不执行操作，并返回上一级。
 echo ------------------------
-choice /C:BC /N
-if errorlevel 2 goto :uninstall_all
-if errorlevel 1 goto :uninstall_models
-
-:uninstall_all
+choice /C:CB /N
+if errorlevel 2 goto :uninstall_models
 cls
 if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-r1" (
     echo 尚未有模型安装！
@@ -630,7 +371,7 @@ if errorlevel 1 (
 cls
 echo 关于
 echo ------------------------
-echo DeepSeek To Go  v1.0.0
+echo DeepSeek To Go  v1.1.0
 echo 项目作者：运动鸡
 echo 贡献者：Xia Junyi（运行测试，bug反馈）
 echo [Q] q群：1033982052
@@ -746,6 +487,60 @@ if errorlevel 1 (
     start https://www.deepseek.com
     goto :open_source_projects
 )
+
+:text_block_models_list
+echo ------------------------
+echo [1] deepseek-r1:1.5b (1.1GB)
+echo [2] deepseek-r1:7b (4.7GB)
+echo [3] deepseek-r1:8b (4.9GB)
+echo [4] deepseek-r1:14b (9GB)
+echo [5] deepseek-r1:32b (20GB)
+echo [6] deepseek-r1:70b (43GB)
+echo [7] deepseek-r1:671b (404GB)
+echo [8] deepseek-v3:671b (404GB)
+goto :%next_interface%
+
+:text_block_run_models
+cls
+if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-%model_name_1%\%model_name_2%" (
+    echo 模型deepseek-%model_name_1%:%model_name_2%尚未安装！
+    echo ------------------------
+    echo [O] 在线下载
+    echo [B] 返回主页
+    echo ------------------------
+    choice /C:OB /N
+    if errorlevel 2 goto :main
+)
+title deepseek-%model_name_1%:%model_name_2%
+cls
+ollama run %ollama_chat_parameter% deepseek-%model_name_1%:%model_name_2%
+goto :main
+
+:manual_import
+
+
+:text_block_uninstall_models
+cls
+echo 确认执行
+echo ------------------------
+echo 要 卸载模型deepseek-%model_name_1%:%model_name_2% 吗？
+echo 此操作无法撤销！
+echo ------------------------
+echo [C] 执行操作，我知道我在做什么！
+echo [B] 不执行操作，并返回上一级。
+echo ------------------------
+choice /C:CB /N
+if errorlevel 2 goto :uninstall_models
+cls
+if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-%model_name_1%\%model_name_2%" (
+    echo 模型deepseek-%model_name_1%:%model_name_2%尚未安装！
+    pause
+    goto :uninstall_models
+)
+ollama rm deepseek-%model_name_1%:%model_name_2%
+echo 命令执行完毕。
+pause
+goto :uninstall_models
 
 :terminal
 cls
