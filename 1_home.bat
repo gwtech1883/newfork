@@ -524,7 +524,11 @@ title deepseek-%model_name_1%:%model_name_2%
 cls
 :re_download
 ollama run %ollama_chat_parameter% deepseek-%model_name_1%:%model_name_2%
-if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-%model_name_1%\%model_name_2%" goto :re_download
+if not exist "%cd%\models\manifests\registry.ollama.ai\library\deepseek-%model_name_1%\%model_name_2%" (
+    echo 检测到下载时出现错误，正在尝试恢复下载……
+    goto :re_download
+)
+cls
 goto :main
 
 :manual_import
